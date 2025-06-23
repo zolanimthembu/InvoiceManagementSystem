@@ -1,0 +1,10 @@
+<h2>Register</h2>
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+  <input type="email" formControlName="email" placeholder="Email" />
+  <input type="password" formControlName="password" placeholder="Password" />
+  <select formControlName="role">
+    <option value="">Select role</option>
+    <option *ngFor="let role of roles" [value]="role">{{ role }}</option>
+  </select>
+  <button type="submit" ng-click="" ng-disabled="email == '' || email == null || password == '' || password == null">Register</button>
+</form>
