@@ -13,5 +13,7 @@ namespace InvoiceManagementSystemBL.UserManagementDAL
     {
         Task<IdentityResult> AddUser(UserRequestDTO user);
         Task<LoginResponseDTO> LoginUser(LoginDTO login);
+        Task<List<UserResponseDTO>> GetUsers();
+        Task<string> UpdateUser(UserResponseDTO user);
     }
 }

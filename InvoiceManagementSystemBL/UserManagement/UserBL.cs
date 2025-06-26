@@ -25,10 +25,19 @@ namespace InvoiceManagementSystemBL.UserManagement
             return _userDAL.AddUser(user);
         }
 
+        public async Task<List<UserResponseDTO>> GetUsers()
+        {
+            return await _userDAL.GetUsers();
+        }
+
         public async Task<LoginResponseDTO> LoginUser(LoginDTO login)
         {
             return await _userDAL.LoginUser(login);
         }
-       
+
+        public async Task<string> UpdateUser(UserResponseDTO user)
+        {
+            return await _userDAL.UpdateUser(user);
+        }
     }
 }
