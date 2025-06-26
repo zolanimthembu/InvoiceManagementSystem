@@ -3,7 +3,7 @@ import { Injectable } from "@angular/core";
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  private apiUrl = 'https://localhost:5001/api/auth'; // adjust to match backend
+  private apiUrl = 'https://localhost:7294/api/auth';
 
   constructor(private http: HttpClient) { }
 
@@ -15,15 +15,15 @@ export class AuthService {
     return this.http.post(`${this.apiUrl}/register`, data);
   }
 
-  saveToken(token: string) {
-    localStorage.setItem('token', token);
+  saveToken(user: any) {
+    localStorage.setItem('user', JSON.stringify(user));
   }
 
   getToken() {
-    return localStorage.getItem('token');
+    return localStorage.getItem('user');
   }
 
   logout() {
-    localStorage.removeItem('token');
+    localStorage.removeItem('user');
   }
 }

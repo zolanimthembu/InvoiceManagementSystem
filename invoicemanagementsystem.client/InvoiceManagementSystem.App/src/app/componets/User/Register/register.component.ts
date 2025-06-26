@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { FormBuilder, Validators, NgModel } from '@angular/forms';
 import { AuthService } from '../service/auth.service';
 
 @Component({
@@ -7,24 +6,25 @@ import { AuthService } from '../service/auth.service';
   templateUrl: './register.component.html'
 })
 export class RegisterComponent {
+  email = '';
+  password = '';
+  selectedRole = '';
   roles = ['User', 'Manager', 'Admin'];
-  email: string  = '';
-  passwrod: string = '';
-  selectedRole: string = '';
 
-  constructor(private fb: FormBuilder, private auth: AuthService, private model: NgModel) { }
-  
-  onSubmit() {
-    var registerForm = {
+  constructor(private auth: AuthService) { }
+
+  register() {
+    const registerForm = {
       email: this.email,
-      password: this.passwrod,
+      password: this.password,
       role: this.selectedRole
     };
 
     this.auth.register(registerForm).subscribe({
       next: () => alert('Registration successful'),
-      error: err => alert('Error: ' + err.error?.title ?? err.message)
+      error: err => {
+        alert('Error: ' + (err.error?.title ?? err.error[0].description))
+      }
     });
   }
 }
-
