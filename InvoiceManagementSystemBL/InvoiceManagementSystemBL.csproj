@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\InvoiceManagementSystemBO\InvoiceManagementSystemBO.csproj" />
+    <ProjectReference Include="..\InvoiceManagementSystemDAL\InvoiceManagementSystemDAL.csproj" />
+  </ItemGroup>
+
 </Project>
