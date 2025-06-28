@@ -25,7 +25,7 @@ export class LoginComponent {
         this.auth.saveToken(response)
         this.router.navigate(['/'])
       }          ,
-      error: err => alert('Error: ' + err.error?.title ?? err.message)
+      error: err => alert('Error: ' + (err.error?.title ?? err.error[0].description))
     });
   }
 }

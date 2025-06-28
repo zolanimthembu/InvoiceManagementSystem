@@ -39,10 +39,9 @@ export class EditUserComponent implements OnInit {
       lastName: this.lastName
     };
     this.auth.update(registerForm).subscribe({
-      next: () => {
+      next: (res) => {
         alert('Updated successful')
         this.router.navigate(['/user/userlist']);
-
       },
       error: err => {
         console.log(err);

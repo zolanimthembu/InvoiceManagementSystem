@@ -80,15 +80,38 @@ namespace InvoiceManagementSystemBL.UserManagementDAL
 
         public async Task<string> UpdateUser(UserResponseDTO user)
         {
-            var updateUser = await _context.Users.FirstOrDefaultAsync(x => x.Id == user.UserId);
-            updateUser!.FirstName = user.FirstName;
-            updateUser.LastName = user.LastName;
-            await _context.SaveChangesAsync();
-            var role = await _context.Roles.FirstOrDefaultAsync(r => r.Name!.ToLower() == user.Role.ToLower());
-            var roleUpdate = await _context.UserRoles.FirstOrDefaultAsync(x => x.UserId == user.UserId);
-            roleUpdate!.RoleId = role!.Id;
-            await _context.SaveChangesAsync();
-            return "success";
+            try
+            {
+                var updateUser = await _context.Users.FirstOrDefaultAsync(x => x.Id == user.UserId);
+                if (updateUser == null) return "User not found";
+
+                updateUser.FirstName = user.FirstName;
+                updateUser.LastName = user.LastName;
+
+                // Remove existing role
+                var currentRole = await _context.UserRoles.FirstOrDefaultAsync(x => x.UserId == user.UserId);
+                if (currentRole != null)
+                    _context.UserRoles.Remove(currentRole);
+
+                // Get new role
+                var newRole = await _context.Roles.FirstOrDefaultAsync(r => r.Name!.ToLower() == user.Role.ToLower());
+                if (newRole == null) return "New role not found";
+
+                // Add new role
+                _context.UserRoles.Add(new IdentityUserRole<string>
+                {
+                    UserId = user.UserId,
+                    RoleId = newRole.Id
+                });
+
+                await _context.SaveChangesAsync();
+                return "success";
+            }
+            catch (Exception ex)
+            {
+                return $"error {ex.Message}";
+            }
+
         }
 
         private JwtSecurityToken GetToken(List<Claim> claims)

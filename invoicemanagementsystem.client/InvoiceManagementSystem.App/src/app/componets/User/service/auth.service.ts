@@ -15,7 +15,7 @@ export class AuthService {
     return this.http.post(`${this.apiUrl}auth/register`, data);
   }
   update(data: { userid: string; firstName: string, lastName: string, email: string; role: string }) {
-    return this.http.put(`${this.apiUrl}Users/UpdateUser`, data);
+    return this.http.put(`${this.apiUrl}Users/UpdateUser`, data,    );
   }
 
 
@@ -25,6 +25,7 @@ export class AuthService {
   }
 
   saveToken(user: any) {
+    localStorage.setItem('token', user.token);
     localStorage.setItem('user', JSON.stringify(user));
   }
 

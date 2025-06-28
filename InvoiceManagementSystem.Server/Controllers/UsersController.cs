@@ -1,5 +1,6 @@
 ﻿using InvoiceManagementSystemBL.UserManagement;
 using InvoiceManagementSystemBO.DTO;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,7 +15,9 @@ namespace InvoiceManagementSystem.Server.Controllers
         {
             _userBL = userBL;
         }
+        
         [HttpGet("GetUsers")]
+        [Authorize]
         public async Task<IActionResult> GetUsers()
         {
             var users = await _userBL.GetUsers();
@@ -23,12 +26,13 @@ namespace InvoiceManagementSystem.Server.Controllers
             return Ok(users);
         }
         [HttpPut("UpdateUser")]
+        [Authorize]
         public async Task<IActionResult> UpdateUser(UserResponseDTO userUpdate)
         {
             var response = await _userBL.UpdateUser(userUpdate);
-            if (response == null)
+            if (response.Contains("error"))
                 return Content("Error Updating");
-            return Ok(response);
+            return Ok();
         }
     }
 }
