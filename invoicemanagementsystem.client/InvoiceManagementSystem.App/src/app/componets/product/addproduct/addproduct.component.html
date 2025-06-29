@@ -1,0 +1,43 @@
+<div class="d-flex justify-content-center align-items-center vh-100">
+  <div class="card p-4 shadow-sm" style="width: 100%; max-width: 500px;">
+    <h4 class="text-center mb-4">Add Products</h4>
+    <form (ngSubmit)="addProduct()">
+      <div class="form-group mb-3">
+        <label for="email">Product Name</label>
+        <input type="text"
+               id="name"
+               [(ngModel)]="name"
+               name="name"
+               class="form-control"
+               placeholder="Enter Product Name"
+               required />
+      </div>
+      <div class="form-group mb-3">
+        <label for="email">Items In Stock</label>
+        <input type="number"
+               id="itemsInStock"
+               [(ngModel)]="itemsInStock"
+               name="itemsInStock"
+               class="form-control"
+               placeholder="Enter Items In Stock"
+               required />
+      </div>
+
+      <div class="form-group mb-3">
+        <label for="email">Cost Per Item (ZAR)</label>
+        <input type="number"
+               id="costPerItem"
+               [(ngModel)]="costPerItem"
+               name="costPerItem"
+               class="form-control"
+               placeholder="Enter Cost Per Item"
+               required />
+      </div>
+      <button type="submit"
+              class="btn btn-success w-100"
+              [disabled]="!name || !itemsInStock || !costPerItem">
+        Save
+      </button>
+    </form>
+  </div>
+</div>
