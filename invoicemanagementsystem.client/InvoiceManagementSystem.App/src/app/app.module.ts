@@ -10,7 +10,10 @@ import { LoginComponent } from './componets/User/Login/login.component';
 import { LayoutComponent } from './componets/layout/layout.component';
 import { UserlistComponent } from './componets/User/userlist/userlist.component';
 import { EditUserComponent } from './componets/User/edit-user/edit-user.component';
-import { AuthInterceptor } from './interceptors/auth.interceptor'
+import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { ProductsComponent } from './componets/product/products/products.component';
+import { AddproductComponent } from './componets/product/addproduct/addproduct.component';
+import { EditproductComponent } from './componets/product/editproduct/editproduct.component'
 
 
 @NgModule({
@@ -20,7 +23,10 @@ import { AuthInterceptor } from './interceptors/auth.interceptor'
     LoginComponent,
     LayoutComponent,
     UserlistComponent,
-    EditUserComponent
+    EditUserComponent,
+    ProductsComponent,
+    AddproductComponent,
+    EditproductComponent
   ],
   imports: [
     BrowserModule,

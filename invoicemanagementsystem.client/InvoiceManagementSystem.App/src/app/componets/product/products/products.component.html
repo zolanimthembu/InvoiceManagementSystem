@@ -1,0 +1,30 @@
+<div>
+  <div class="align-items-right">
+    <button class="btn btn-primary" (click)="addProduct()">Add Product</button>
+    <br />
+    <br />
+  </div>
+
+
+  <table class="table table-primary table-striped-columns" id="tbl1">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Product Name</th>
+        <th scope="col">Items In Stock</th>
+        <th scope="col">Cost Per Item</th>
+        <th scope="col" class="text-center">Edit</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of products; let i = index">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>{{ product.name }}</td>
+        <td>{{ product.itemsInStock }}</td>
+        <td>R{{ product.costPerItem }}</td>
+        <td class="text-center"><button class="btn btn-primary" (click)="updateProduct(product)">Edit</button></td>
+
+      </tr>
+    </tbody>
+  </table>
+</div>

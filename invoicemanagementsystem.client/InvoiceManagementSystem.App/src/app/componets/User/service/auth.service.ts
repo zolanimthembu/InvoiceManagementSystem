@@ -1,9 +1,10 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { environment } from '../../../enviroments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  private apiUrl = 'https://localhost:7294/api/';
+  private apiUrl = environment.apiUrl;
   private selectedUser!: any;
   constructor(private http: HttpClient) { }
 
@@ -35,6 +36,7 @@ export class AuthService {
 
   logout() {
     localStorage.removeItem('user');
+    localStorage.removeItem('token');
   }
   setUser(user: any) {
     this.selectedUser = user;

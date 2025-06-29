@@ -35,4 +35,7 @@ export class LayoutComponent implements OnInit {
   userList() {
     this.router.navigate(['/user/userlist']);
   }
+  products() {
+    this.router.navigate(['/product/products']);
+  }
 }
