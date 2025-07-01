@@ -24,7 +24,6 @@ export class AddproductComponent {
     this.service.addProduct(product).subscribe(
       {
         next: (res) => {
-          console.log(res);
           alert('Added successfuly')
           this.router.navigate(['/product/products']);
         },

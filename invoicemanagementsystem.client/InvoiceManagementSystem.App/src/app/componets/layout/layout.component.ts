@@ -38,4 +38,8 @@ export class LayoutComponent implements OnInit {
   products() {
     this.router.navigate(['/product/products']);
   }
+  invoices() {
+    this.router.navigate(['/invoice/invoices']);
+
+  }
 }
