@@ -13,7 +13,8 @@ import { EditUserComponent } from './componets/User/edit-user/edit-user.componen
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { ProductsComponent } from './componets/product/products/products.component';
 import { AddproductComponent } from './componets/product/addproduct/addproduct.component';
-import { EditproductComponent } from './componets/product/editproduct/editproduct.component'
+import { EditproductComponent } from './componets/product/editproduct/editproduct.component';
+import { InvoicesComponent } from './componets/invoice/invoices/invoices.component'
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { EditproductComponent } from './componets/product/editproduct/editproduc
     EditUserComponent,
     ProductsComponent,
     AddproductComponent,
-    EditproductComponent
+    EditproductComponent,
+    InvoicesComponent
   ],
   imports: [
     BrowserModule,

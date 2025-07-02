@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../service/product.service';
 import { Router } from '@angular/router';
-
+declare var $: any;
 
 @Component({
   selector: 'app-products',
@@ -12,6 +12,7 @@ export class ProductsComponent implements OnInit {
 
   products: any = [];
   data: any;
+
   constructor(private productService: ProductService, private router: Router) { }
 
   ngOnInit(): void {
@@ -24,7 +25,6 @@ export class ProductsComponent implements OnInit {
         if (this.data.responseCode == 200) {
           this.products = this.data.responseObject;
         }
-        //this.products = response;
       },
       error: err => alert("Error getting products")
     })
