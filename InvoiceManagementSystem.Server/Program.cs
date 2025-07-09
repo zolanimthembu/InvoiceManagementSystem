@@ -11,6 +11,8 @@ using InvoiceManagementSystemBL.UserManagementDAL;
 using InvoiceManagementSystemBL.UserManagement;
 using InvoiceManagementSystemDAL.ProductsManagmentDAL;
 using InvoiceManagementSystemBL.ProductManagementBL;
+using InvoiceManagementSystemDAL.InvoiceManagementDAL;
+using InvoiceManagementSystemBL.InvoiceManagementBL;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -29,6 +31,8 @@ builder.Services.AddScoped<IUserDAL, UserDAL>();
 builder.Services.AddScoped<IUserBL, UserBL>();
 builder.Services.AddScoped<IProductsDAL, ProductDAL>();
 builder.Services.AddScoped<IProductBL, ProductBL>();
+builder.Services.AddScoped<IInvoicesDAL, InvoicesDAL>();
+builder.Services.AddScoped<IInvoiceBL, InvoiceBL>();
 // JWT settings
 var jwtKey = builder.Configuration["Jwt:Key"];
 var key = Encoding.ASCII.GetBytes(jwtKey!);

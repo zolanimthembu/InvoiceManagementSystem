@@ -8,6 +8,7 @@ import { EditUserComponent } from './componets/User/edit-user/edit-user.componen
 import { ProductsComponent } from './componets/product/products/products.component';
 import { AddproductComponent } from "./componets/product/addproduct/addproduct.component";
 import { EditproductComponent } from './componets/product/editproduct/editproduct.component';
+import { InvoicesComponent } from './componets/invoice/invoices/invoices.component';
 
 const routes: Routes = [
   { path: 'user/login', component: LoginComponent },
@@ -21,7 +22,7 @@ const routes: Routes = [
       { path: 'product/products', component: ProductsComponent },
       { path: 'product/addproduct', component: AddproductComponent },
       { path: 'product/editproduct', component: EditproductComponent },
-
+      { path: 'invoice/invoices', component: InvoicesComponent },
     ]
   },
   { path: '**', redirectTo: 'user/login' }
